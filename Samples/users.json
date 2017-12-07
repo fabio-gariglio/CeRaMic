@@ -1,0 +1,14 @@
+[
+  {
+    "Email": "crm.seller@test.com",
+    "Password": "seller",
+    "Name": "seller",
+    "Role": "Seller"
+  },
+  {
+    "Email": "crm.supervisor@test.com",
+    "Password": "supervisor",
+    "Name": "supervisor",
+    "Role": "Supervisor"
+  }
+]

@@ -1,0 +1,40 @@
+﻿<div class="container relations-list"
+		 ng-controller="supervisorDashboardController">
+
+	<div class="input-group search-bar">
+		<div class="input-group-btn">
+			<button class="btn btn-primary" ng-click="search()"><i class="fa fa-search"></i></button>
+		</div>
+		<input type="text" class="form-control" placeholder="Referent or client name" ng-model="query">
+		<div class="input-group-btn">
+			<button class="btn btn-success" ng-click="createReferent()"><i class="fa fa-plus"></i></button>
+		</div>
+	</div>
+
+	<ul class="list-unstyled relations-list" infinite-scroll="loadRelations()">
+		<li class="relations-item"
+				ng-repeat="relation in relations"
+				ng-class="{'owner':relation.OwnerName}"
+				ng-click="showRelation(relation.Id)">
+			<div>
+				<div class="relation-info">
+					<div>
+						<span class="relation-referent">{{relation.ReferentName}}</span>
+						<span class="relation-client"><strong>{{relation.ClientName}}</strong></span>
+					</div>
+					<div>
+						<small ng-if="!relation.OwnerName">No owner assigned</small>
+						<small ng-if="relation.OwnerName"><strong>{{relation.OwnerName}}</strong> as owner</small>
+					</div>
+					<div>
+						<small ng-if="!relation.PartnerName">No parter assigned</small>
+						<small ng-if="relation.PartnerName"><strong>{{relation.PartnerName}}</strong> as partner</small>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="loading-adv text-center" ng-if="loading">
+			<span class="loading-text">Loading&nbsp;</span><i class="fa fa-2x fa-spin fa-refresh"></i>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,32 @@
+﻿<div class="navbar navbar-default navbar-main navbar-fixed-top" role="navigation">
+	
+	<div class="container">
+		
+		<div class="navbar-collapse">
+		
+			<div class="nav navbar-nav navbar-left navbar-action dropdown" on-toggle="toggled(open)" dropdown>
+				<a href class="fa fa-2x fa-reorder dropdown-toggle" dropdown-toggle></a>
+				<ul class="dropdown-menu" dropdown-menu>
+					<!--<li>
+						<a ng-if="!!isUserSupervisor"
+							 ng-click="export()"><i class="fa fa-table"></i>Export</a>
+					</li>
+					<li class="divider"></li>-->
+					<li>
+						<a href="/user/logout"><i class="fa fa-power-off"></i>Logout</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="pull-right">
+				<h4>Welcome <strong>{{user.Name}}</strong></h4>
+			</div>
+
+		</div> <!--/.nav-collapse -->
+
+	</div> <!--/.container -->
+
+</div><!--/.navbar -->
+
+<div class="container-fluid" ui-view="">
+</div>

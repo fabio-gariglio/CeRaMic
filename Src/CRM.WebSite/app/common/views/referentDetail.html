@@ -1,0 +1,131 @@
+﻿<div class="modal-body row" ng-controller="referentDetailController">
+
+	<div class="col-xs-3">Name</div>
+	<div class="col-xs-9">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<input id="FirstName"
+							 name="FirstName"
+							 type="text"
+							 class="form-control"
+							 placeholder="Referent's first name"
+							 required
+							 autofocus=""
+							 ng-model="referent.FirstName">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-3">Surname</div>
+	<div class="col-xs-9">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<input id="LastName"
+							 name="LastName"
+							 type="text"
+							 class="form-control"
+							 placeholder="Referent's last name"
+							 ng-model="referent.LastName">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-3">Client</div>
+	<div class="col-xs-9">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<input type="text"
+							 id="clientName"
+							 name="client"
+							 class="form-control"
+							 required
+							 ng-model="referent.Client"
+							 typeahead-loading="loading"
+							 typeahead="client as client.Name for client in getClient($viewValue) | filter:{Name:$viewValue} ">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="form-group">
+			<div class="input-group">
+				<label for="EmailAddress" class="input-group-addon input-icon"><i class="fa fa-2x fa-envelope"></i></label>
+				<input id="EmailAddress"
+							 name="EmailAddress"
+							 type="email"
+							 class="form-control"
+							 placeholder="Email address"
+							 ng-model="referent.EmailAddress">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="form-group">
+			<div class="input-group">
+				<label for="MobilePhone" class="input-group-addon input-icon"><i class="fa fa-2x fa-mobile-phone"></i></label>
+				<input id="MobilePhone"
+							 name="MobilePhone"
+							 type="tel"
+							 class="form-control"
+							 placeholder="Mobile phone"
+							 ng-model="referent.MobilePhone"
+							 ng-pattern="/^\+?\d{7,13}$/">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="form-group">
+			<div class="input-group">
+				<label for="LandlineNumber" class="input-group-addon input-icon"><i class="fa fa-2x  fa-phone"></i></label>
+				<input id="LandlineNumber"
+							 name="LandlineNumber"
+							 type="tel"
+							 class="form-control"
+							 placeholder="Landline number"
+							 ng-model="referent.LandlineNumber"
+							 ng-pattern="/^\d{7,11}$/">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-12 form-group">
+		<button class="btn btn-default btn-group-justified" ng-click="showOtherInfo = !showOtherInfo">
+			<i class="fa" ng-class="{'fa-chevron-down':showOtherInfo==false,'fa-chevron-up':showOtherInfo==true}"></i> More info
+		</button>
+	</div>
+
+	<div ng-if="!!showOtherInfo">
+
+		<div class="col-xs-3">Area</div>
+		<div class="col-xs-9">
+			<div class="form-group">
+				<div class="input-group input-field">
+					<input id="Area"
+					       name="Area"
+					       type="text"
+					       class="form-control"
+					       placeholder="Referent's area"
+					       ng-model="referent.Area">
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-3">Secretary</div>
+		<div class="col-xs-9">
+			<div class="form-group">
+				<div class="input-group input-field">
+					<input id="Secretary"
+					       name="Secretary"
+					       type="text"
+					       class="form-control"
+					       placeholder="Referent's secretary"
+					       ng-model="referent.Secretary">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

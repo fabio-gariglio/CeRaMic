@@ -1,0 +1,39 @@
+﻿<div class="btn-group action-bar" role="group" aria-label="...">
+	
+	<button type="button" 
+	        class="btn btn-primary btn-priority" 
+					ng-if="relation.Priority > 0">
+		<i class="fa" ng-class="{'fa-angle-up':relation.Priority < 5,'fa-angle-double-up':relation.Priority > 4}"></i>
+		<span>{{relation.Priority}}</span>
+	</button>	
+
+	<button type="button"
+					class="btn btn-default btn-action"
+					ng-disabled="!relation.EmailAddress"
+					ng-click="send(relation.EmailAddress)">
+		<i class="fa fa-2x fa-envelope-o"></i>
+	</button>
+
+	<button type="button"
+					class="btn btn-default btn-action"
+					ng-if="relation.MobilePhone != null"
+					ng-click="call(relation.MobilePhone)">
+		<i class=" fa fa-2x fa-mobile-phone">
+		</i>
+	</button>		
+	
+	<button type="button"
+					class="btn btn-default btn-action"
+					ng-if="relation.MobilePhone == null && relation.LandlineNumber != null"
+					ng-click="call(relation.LandlineNumber)">
+		<i class="fa fa-2x fa-phone"></i>
+	</button>
+
+	<button type="button"
+					class="btn btn-default btn-action"
+					ng-if="relation.MobilePhone == null && relation.LandlineNumber == null"
+					disabled>
+		<i class="fa fa-2x fa-phone"></i>
+	</button>
+
+</div>

@@ -1,0 +1,23 @@
+﻿	<div class="modal-header">
+		<h3 class="modal-title">
+			{{referent.Name}}
+		</h3>
+		<button class="btn btn-danger btn-close" ng-click="cancel()"><i class="fa fa-close"></i></button>
+	</div>
+
+<div class="modal-body row">
+	<div class="col-xs-12"
+			 ng-repeat="action in actions">
+		<button class="btn btn-default btn-action"
+						ng-click="do(action)">
+			<i class="pull-left fa fa-2x fa-{{action.Icon}}"></i>
+			<span>{{action.Label}}</span>
+		</button>
+	</div>
+	<div class="col-xs-12" ng-if="!actions.length">
+		<h3><i class="fa fa-warning text-yellow"></i> No action available!</h3>
+		<p>
+			Please, specify at least one contact for the current referent.
+		</p>
+	</div>
+</div>

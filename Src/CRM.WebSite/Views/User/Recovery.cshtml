@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Login</title>
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@Styles.Render("~/Content/css")
+	</head>
+<body>
+
+	<div class="container">
+
+		<div class="login-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+			<div class="panel panel-info">
+
+				<div class="panel-heading">
+					<div class="panel-title">Password recovery</div>
+				</div> <!-- /.panel-heading -->
+
+				<div style="padding-top:30px" class="panel-body">
+
+					<form class="login-form" role="form" method="POST" action="/user/recovery">
+						
+						@if (IsPost)
+						{
+							<div class="alert alert-success" role="alert">New password has been sent</div>
+						}
+						else
+						{
+							<div class="form-group">
+								<div class="input-group">
+									<label for="Email" class="input-group-addon input-icon"><i class="fa fa-envelope"></i></label>
+									<input id="Email" name="Email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
+								</div>
+							</div> <!-- /.form-group -->
+
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Recovery</button>
+						}
+
+					</form>
+
+				</div>
+
+			</div> <!-- /.panel-info -->
+
+
+		</div> <!-- /.row -->
+
+	</div> <!-- /.container -->
+
+</body>
+</html>

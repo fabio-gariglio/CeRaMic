@@ -1,0 +1,41 @@
+﻿<form name="Form">
+
+	<div class="modal-header">
+		<h3 class="modal-title">
+			Export data
+			<button class="btn btn-danger btn-close" ng-click="cancel()"><i class="fa fa-close"></i></button>
+		</h3>
+	</div>
+
+	<div class="modal-body container">
+		<ul class="list-unstyled">
+			<li>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"
+									 ng-model="allSelected"
+									 ng-click="toggleAll()">
+						<strong>ALL SELLERS</strong>
+					</label>
+				</div>
+			</li>
+			<li ng-repeat="seller in sellers">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"
+									 ng-model="seller.Selected">
+						{{seller.Name}}
+					</label>
+				</div>
+			</li>
+		</ul>	
+	</div>
+	
+	<div class="modal-footer">
+		<button class="btn btn-primary"
+						ng-click="export()">
+			Export
+		</button>
+	</div>
+
+</form>

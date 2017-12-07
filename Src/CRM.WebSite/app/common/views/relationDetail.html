@@ -1,0 +1,65 @@
+﻿<div class="modal-body row" ng-controller="relationDetailController">
+	
+	<div class="col-xs-12 form-group">
+		<button class="btn btn-default btn-group-justified" ng-click="showReferentInfo(relation.ReferentId)">
+			<i class="fa fa-edit"></i> Edit Referent
+		</button>
+	</div>
+	
+	<div class="col-xs-2">Owner</div>
+	<div class="col-xs-10">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<select id="Owner"
+								name="Owner"
+								class="form-control"
+								ng-model="relation.Owner"
+								ng-options="seller as seller.Name for seller in sellers"
+								ng-disabled="!isSupervisor"></select>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-2">Partner</div>
+	<div class="col-xs-10">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<select id="Partner"
+								name="Partner"
+								class="form-control"
+								ng-model="relation.Partner"
+								ng-options="seller as seller.Name for seller in sellers"
+								ng-disabled="!isSupervisor"></select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-xs-2">Priority</div>
+	<div class="col-xs-10">
+		<div class="form-group">
+			<i class="fa fa-2x fa-undo rate-undo" ng-click="clearPriority()"></i>
+			<rating ng-model="priority"
+			        max="7"
+			        state-on="'fa fa-2x fa-circle rate-icon'"
+			        state-off="'fa fa-2x fa-circle-thin rate-icon'">
+			</rating>
+		</div>
+	</div>
+
+
+	<div class="col-xs-12">
+		<div class="form-group">
+			<div class="input-group input-field">
+				<textarea id="Note"
+				          name="Note"
+				          type="text"
+				          class="form-control"
+				          placeholder="Note"
+				          rows="4"
+				          ng-model="relation.NoteContent"></textarea>
+			</div>
+		</div>
+	</div>
+
+</div>

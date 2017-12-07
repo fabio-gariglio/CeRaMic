@@ -1,0 +1,34 @@
+﻿<div class="container relations-list"
+		 ng-controller="sellerDashboardController">
+
+	<div ng-include="'/app/common/views/searchBar.html'"></div>
+
+	<ul class="list-unstyled relations-list" infinite-scroll="loadRelations()">
+		
+		<li class="relations-item"
+		    ng-repeat="relation in relations"
+		    ng-class="{'owner':relation.Type == 1,'partner':relation.Type == 2}">
+			
+			<div>
+				<div class="relation-type" ng-if="relation.Type == 1">O</div>
+				<div class="relation-type" ng-if="relation.Type == 2">P</div>
+				<div>
+					<crm-action-bar relation="relation"></crm-action-bar>
+					<div class="relation-referent" ng-click="showRelation(relation.Id)">
+						{{relation.ReferentName}}
+					</div>
+					<div class="relation-client" ng-click="showRelation(relation.Id)">
+						<strong ng-click="forceSearch(relation.ClientName)">{{relation.ClientName}}</strong>
+					</div>
+				</div>
+
+			</div>
+
+		</li>
+
+		<li class="loading-adv text-center" ng-if="loading">
+			<span class="loading-text">Loading&nbsp;</span><i class="fa fa-2x fa-spin fa-refresh"></i>
+		</li>
+
+	</ul>
+</div>

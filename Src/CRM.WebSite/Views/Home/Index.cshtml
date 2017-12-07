@@ -1,0 +1,30 @@
+﻿@model CRM.WebSite.Controllers.HomeModel
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>CRM</title>
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/angularjs")
+		
+		
+		@foreach (var script in Model.Scripts)
+		{
+			<script src="@script" language="javascript"></script>	
+		}
+		<script src="~/signalr/hubs"></script>
+		@Styles.Render("~/Content/css")
+	</head>
+	<body ng-app="crm" ng-controller="mainController">
+		<!-- We'll also add some navigation: -->
+		<div ui-view=""></div>
+	</body>	
+	<script language="javascript">
+		window.user = {
+			Id: "@Model.UserId",
+			Name: "@Model.UserName",
+			Role: "@Model.UserRole"
+		};
+</script>
+</html>

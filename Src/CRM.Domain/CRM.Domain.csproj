@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{555312FD-A281-4969-B122-9AFDF850EBF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM.Domain</RootNamespace>
+    <AssemblyName>CRM.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\CsvHelper.2.10.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="CuttingEdge.Conditions">
+      <HintPath>..\..\packages\CuttingEdge.Conditions.1.2.0.0\lib\NET35\CuttingEdge.Conditions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clients\CommandHandlers\ChangeClientNameCommandHandler.cs" />
+    <Compile Include="Referents\CommandHandlers\ReferentCommandHandler.cs" />
+    <Compile Include="Relations\CommandHandlers\SetRelationNoteCommandHandler.cs" />
+    <Compile Include="Relations\CommandHandlers\UpdateRelationCommandHandler.cs" />
+    <Compile Include="Relations\RelationAggregate.cs" />
+    <Compile Include="Relations\CommandHandlers\CreateRelationCommandHandler.cs" />
+    <Compile Include="Relations\Projections\RelationsProjection.cs" />
+    <Compile Include="Projections\CommandHandlers\RebuildAllProjectionsCommandHandler.cs" />
+    <Compile Include="Referents\CommandHandlers\ChangeReferentNameCommandHandler.cs" />
+    <Compile Include="Referents\ReferentAggregate.cs" />
+    <Compile Include="Referents\Projections\ReferentProjection.cs" />
+    <Compile Include="Clients\CommandHandlers\CreateClientCommandHandler.cs" />
+    <Compile Include="Clients\Projections\ClientProjection.cs" />
+    <Compile Include="Clients\ClientAggregate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referents\Sagas\ReferentCreationSaga.cs" />
+    <Compile Include="Users\CommandHandlers\RecoveryUserPasswordCommandHandler.cs" />
+    <Compile Include="Users\CommandHandlers\ChangeUserPasswordCommandHandler.cs" />
+    <Compile Include="Users\CommandHandlers\CreateUserCommandHandler.cs" />
+    <Compile Include="Users\EventHandler\PasswordRecoveredNotificator.cs" />
+    <Compile Include="Users\Projections\UserProjection.cs" />
+    <Compile Include="Users\UserAggregate.cs" />
+    <Compile Include="Utility\CsvItem.cs" />
+    <Compile Include="Utility\ExportCommandHandler.cs" />
+    <Compile Include="Utility\ImportCsvCommandHandler.cs" />
+    <Compile Include="Utility\ImportUsersCommandHandler.cs" />
+    <Compile Include="Utility\NamesProjection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRM.Common\CRM.Common.csproj">
+      <Project>{bb6006c6-bcd8-4a9f-ade6-940a47e83dab}</Project>
+      <Name>CRM.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRM.EventSourcing\CRM.EventSourcing.csproj">
+      <Project>{4f37ffba-a5d7-41b9-86f3-d676768614dc}</Project>
+      <Name>CRM.EventSourcing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRM.Shared\CRM.Shared.csproj">
+      <Project>{17ae8e92-97aa-4b7d-b157-6bf6e348616b}</Project>
+      <Name>CRM.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

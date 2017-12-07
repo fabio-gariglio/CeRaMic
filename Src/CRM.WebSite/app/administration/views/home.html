@@ -1,0 +1,48 @@
+﻿<div class="app-body container" ng-controller="adminController">
+	
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<button type="button" class="btn btn-warning" ng-click="rebuildProjections()">Rebuild Projections</button>
+		</div>
+		<div class="col-md-9">
+			<p>Rebuild all system projections</p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<input type="file" ng-file-select="onFileSelect($files)">
+		</div>
+		<div class="col-md-9">
+			<p>Choose an CSV file to import</p>
+		</div>
+	</div>	
+
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<input type="file" ng-file-select="onUserFileSelect($files)">
+		</div>
+		<div class="col-md-9">
+			<p>Choose an users file to import</p>
+		</div>
+	</div>	
+
+	<div class="row">
+		<table class="table table-condensed">
+			<tr>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="user in users">
+				<td>{{user.Name}}</td>
+				<td>{{user.Email}}</td>
+				<td>{{user.Role}}</td>
+				<td>
+					<button type="button" class="btn btn-default" ng-click="changePassword(user)">Change Password</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
